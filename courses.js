@@ -9,7 +9,7 @@ const courses = [
         Duration: "3 months",
         Price: "49.99",
         CourseURL: "/intro-to-machine-learning-python.html",
-        CourseImage: "https://example.com/images/ml-python-intro.jpg",
+        CourseImage: "https://www.freecodecamp.org/news/content/images/2022/02/Banner-10.png",
     },
     {
         Course: "Working with Eulers and Quaternion",
@@ -180,3 +180,70 @@ const courses = [
         CourseImage: "https://i.ytimg.com/vi/iOtNArnpOrc/maxresdefault.jpg",
     }
 ];
+
+let amountOfCourses = courses.length;
+console.log(amountOfCourses);
+
+
+// use a for loop to display the course titles
+
+courses.forEach(element => {
+    console.log(element.Course);
+});
+
+// Filter the courses based on the course code "AK-47"
+let filteredCourses = courses.filter(course => course.CourseCode == "AK-47");
+
+console.log(`Course Price: ${filteredCourses[0].Price}`);
+
+
+ // Function to render course cards
+ function renderCourses(courses) {
+    let courseContainer = $('#courseContainer');
+    courseContainer.empty();
+    courses.forEach(function(course) {
+      let cardHtml = `
+        <div class="col-md-4">
+          <div class="card">
+            <img src="${course.CourseImage}" class="card-img-top" alt="${course.Course}">
+            <div class="card-body">
+              <h5 class="card-title">${course.Course}</h5>
+              <p class="card-text"><strong>Course Code:</strong> ${course.CourseCode}</p>
+              <p class="card-text">${course.CourseDescription}</p>
+              <p class="card-text"><strong>Price:</strong> $${course.Price}</p>
+              <button class="myButton">Add to cart</button>
+            </div>
+          </div>
+        </div>
+      `;
+      courseContainer.append(cardHtml);
+      
+      const allbuttons =  document.querySelectorAll('.myButton');
+      console.log(allbuttons);
+      allbuttons.forEach(button => 
+          button.addEventListener('mouseover', runSecondCode)
+      )
+      function runSecondCode() {
+          alert('Add to cart')
+      }
+    });
+  }
+
+  // Initial rendering of courses
+  renderCourses(courses);
+
+  // Event listener for price filter change
+  $('#priceFilter').change(function() {
+    let selectedPrice = $(this).val();
+    let filteredCourses = [];
+
+    if (selectedPrice === 'all') {
+      filteredCourses = courses;
+    } else {
+      filteredCourses = courses.filter(function(course) {
+        return course.Price === selectedPrice;
+      });
+    }
+
+    renderCourses(filteredCourses);
+  });

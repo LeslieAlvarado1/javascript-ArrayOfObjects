@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Filtered Courses</title>
+  <!-- Bootstrap CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+  <style>
+    .card {
+      height: 100%; /* Ensure all cards have equal height */
+    }
+    .card-container {
+      margin-bottom: 20px; /* Add margin between the bottom of each card */
+    }
+  </style>
+</head>
+<body>
+  
+
+<div class="container">
+  <h1 class="mt-4 mb-4">Filtered Courses</h1>
+
+  <!-- Select Dropdown for Filtering by Price -->
+  <div class="form-group">
+    <label for="priceFilter" style="color: white;">Filter by Price:</label>
+    <select class="form-control" id="priceFilter">
+      <option value="all">All Prices</option>
+      <option value="free">Free</option>
+      <option value="paid">Paid</option>
+    </select>
+  </div>
+
+  <!-- Course Cards -->
+  <div class="row" id="courseContainer">
+    <!-- Course Cards will be dynamically added here -->
+    <!-- Each card is placed within a column with equal size -->
+  </div>
+</div>
+
+<!-- Bootstrap JS and jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="courses.js"></script>
+</body>
+</html>
